@@ -1,5 +1,4 @@
-let todoList = [];
-
+let todoList = JSON.parse(localStorage.getItem('todos'));
 
 let txt = document.getElementById("txt");
 let list = document.getElementById("list");
@@ -41,10 +40,19 @@ window.onload = function () {
 
 function add() {
     let description = document.getElementsByClassName('description-input')[0];
-    let tagsArr = [];
+    let arTags = [];
     items.map((item, index) => {
-        tagsArr.push(item);
+        arTags.push(item);
     });
-
+    let todoObj = {
+        descript: description.value,
+        tags: arTags,
+        status: 'В работе',
+    }
+    todoList.push(todoObj);
+    items = ["Учеба", "Работа", "Досуг"];
+    render();
+    document.getElementsByClassName('description-input')[0].value = "";
+    localStorage.setItem('todos', JSON.stringify(todoList));
 }
 
