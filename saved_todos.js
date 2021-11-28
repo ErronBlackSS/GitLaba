@@ -15,19 +15,17 @@ for(let obj in arTodos){
             <ul id="tags-list">
               ${tags_init}
             </ul>
-          </div>
-          &nbsp;
+          </div>       &nbsp;
           <div class="status-container">
             <span>
               Выберите состояние
             </span>
-            <select>
+            <select aria-readonly="true">
               <option>В работе</option>
               <option>Завершена</option>
               <option>Отложена</option>
             </select>
-          </div>
-          &nbsp;
+          </div>          &nbsp;
           <div class="container-buttons">
             <button>Редактировать</button>
             <button>Удалить</button>

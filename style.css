@@ -40,7 +40,7 @@ a.btn:active {
 }
 
 .container-buttons button:hover {
-    background-color: orange;
+    background-color: crimson;
     transition: 0.5s;
 }
 
