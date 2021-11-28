@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple To-Do List</title>
+  <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="header--outer">
+    <h1 class="header--inner">To-Do</h1>
+</div>
+<div class="todo-body-out">
+    <div class="todo-body-inner">
+        <h1 class="todo-title">Добавить новую заметку</h1>
+        <input type="text" placeholder="Введите описание" class="description-input">
+        <div class="container">
+            <ul id="list"></ul>
+            <input type="text" id="txt" placeholder="Введите категорию">
+        </div>
+    </div>
+    <div class="button-item">
+        <a href="#" class="btn" onclick="add()">Добавить</a>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
