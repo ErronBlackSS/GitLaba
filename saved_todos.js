@@ -1,3 +1,4 @@
+console.log(1);
 let arTodos = JSON.parse(localStorage.getItem('todos'));
 
 let list = document.getElementById("saved_list");
@@ -15,19 +16,17 @@ for(let obj in arTodos){
             <ul id="tags-list">
               ${tags_init}
             </ul>
-          </div>
-          &nbsp;
+          </div>       &nbsp;
           <div class="status-container">
             <span>
               Выберите состояние
             </span>
-            <select>
+            <select aria-readonly="true">
               <option>В работе</option>
               <option>Завершена</option>
               <option>Отложена</option>
             </select>
-          </div>
-          &nbsp;
+          </div>          &nbsp;
           <div class="container-buttons">
             <button>Редактировать</button>
             <button>Удалить</button>

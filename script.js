@@ -1,5 +1,4 @@
 let todoList = JSON.parse(localStorage.getItem('todos'));
-
 let txt = document.getElementById("txt");
 let list = document.getElementById("list");
 let items = ["Учеба", "Работа", "Досуг"];
