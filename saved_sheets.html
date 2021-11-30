@@ -6,16 +6,10 @@
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div class="d7">
-  <form>
-    <input type="text" placeholder="Искать здесь...">
-    <button type="submit">Поиск</button>
 
-  </form>
-</div>
 <div class="container-buttons header--outer">
   <button><a href="index.html">Создать задачу</a></button>
-  <button><a>Фильтры</a></button>
+
   <button><a href="saved_sheets.html"> Сохраненные задачи </a></button>
 </div>
 
@@ -24,6 +18,12 @@
 <div class="todo-body-out--saved">
   <div class="todo-body-inner">
   <h1 class="todo-title">Сохраненные заметки</h1>
+
+    <div class="d7">
+      <form>
+        <input type="text" id="search-input" onkeyup="myFunction()" placeholder="Искать здесь...">
+      </form>
+    </div>
   <ul id="saved_list">
   </ul>
 </div>
