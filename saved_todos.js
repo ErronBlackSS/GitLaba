@@ -1,8 +1,6 @@
 console.log(1);
 let arTodos = JSON.parse(localStorage.getItem('todos'));
-
 let list = document.getElementById("saved_list");
-
 for(let obj in arTodos){
     let tags_init = ``;
     for(let tag in arTodos[obj].tags){
