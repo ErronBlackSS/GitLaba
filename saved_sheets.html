@@ -7,12 +7,18 @@
 </head>
 <body>
 <div class="container-buttons header--outer">
-  <button><a href="index.html">Создать задачу</a></button>
-  <button><a href="saved_sheets.html"> Сохраненные задачи </a></button>
+  <button onclick="window.location.href = 'index.html';">Создать задачу</button>
+  <button onclick="window.location.href = 'saved_sheets.html';">Сохраненные задачи </button>
 </div>
 <div class="todo-body-out--saved">
   <div class="todo-body-inner">
   <h1 class="todo-title">Сохраненные заметки</h1>
+    <button onclick="show_filters()" id="filter-button"> Фильтры </button>
+    <input id="search-input" onkeyup="search()" placeholder="Поиск по описанию">
+    <div class="container" id="filters">
+
+    </div>
+
   <ul id="saved_list">
   </ul>
 </div>
