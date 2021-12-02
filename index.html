@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="container-buttons header--outer">
-    <button><a href="index.html">Создать задачу</a></button>
-    <button><a href="saved_sheets.html"> Сохраненные задачи </a></button>
+    <button onclick="window.location.href = 'index.html';">Создать задачу</button>
+    <button onclick="window.location.href = 'saved_sheets.html';">Сохраненные задачи </button>
 </div>
 <div class="todo-body-out">
     <div class="todo-body-inner">
@@ -17,6 +17,10 @@
         <div class="container">
             <ul id="list"></ul>
             <input type="text" id="txt" placeholder="Введите категорию">
+        </div>
+        <br>
+        <div class="container">
+            Статус: по умолчанию "В работе"
         </div>
     </div>
     <div class="button-item">
