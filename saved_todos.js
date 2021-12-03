@@ -7,10 +7,25 @@ function render_todos()
     for (let obj in arTodos)
     {
         let tags_init = ``;
+        let statusClass = '';
+        let status = arTodos[obj].status;
+        if(status === 'В работе')
+        {
+            statusClass = 'work-status';
+        }
+        else if(status === 'Отложена')
+        {
+            statusClass = 'wait-status';
+        }
+        else
+        {
+            statusClass = 'end-status';
+        }
         for (let tag in arTodos[obj].tags)
         {
             tags_init += `<li><span>${arTodos[obj].tags[tag]}</span><a>X</a></li>`
         }
+
         list.innerHTML += `<li id="elem${Number(obj)}" type="">     
                                 <h3>Задача №${Number(obj) + 1}</h3>
                                 <a class="saved-a-todos" type="text">${arTodos[obj].descript}</a>
@@ -22,14 +37,7 @@ function render_todos()
                                     </ul>
                                 </div>       &nbsp
                                 <div class="status-container">
-                                    <span>
-                                        Выберите состояние
-                                    </span>
-                                    <select aria-readonly="true">
-                                        <option>В работе</option>
-                                        <option>Завершена</option>
-                                        <option>Отложена</option>
-                                    </select>
+                                    Статус: <span class="${statusClass}" id="status${Number(obj)}">${status}</span>
                                 </div>          
                                 <div class="container-buttons">
                                     <button onclick="edit(${Number(obj)})">Редактировать</button>
@@ -41,7 +49,7 @@ function render_todos()
 }
 function show_filters() {
     let show = document.getElementById('filters');
-    if(show.style.display == 'none')
+    if(show.style.display === 'none')
     {
         show.style.display = "";
     }
@@ -50,17 +58,17 @@ function show_filters() {
         show.style.display = 'none';
     }
 }
+
 function search()
 {
-    let input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("search-input");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("saved_list");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++)
+    let input = document.getElementById("search-input");
+    let filter = input.value.toUpperCase();
+    let ul = document.getElementById("saved_list");
+    let li = ul.getElementsByTagName("li");
+    for (let i = 0; i < li.length; i++)
     {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.value || a.innerText;
+        let a = li[i].getElementsByTagName("a")[0];
+        let txtValue = a.value || a.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1)
         {
             li[i].style.display = "";
@@ -77,11 +85,15 @@ function search()
 
 function edit(todoIndex)
 {
-    //console.log(todoIndex);
     let fullList = document.querySelector("#saved_list");
     let saved_tags = arTodos[todoIndex].tags;
     let saved_description = arTodos[todoIndex].descript;
     let li_element = fullList.querySelector(`#elem${todoIndex}`);
+
+    let status = arTodos[todoIndex].status;
+    let statusClass = (status === 'В работе') ? 'work-status' : (status === 'Отложена') ? 'wait-status' : 'end-status';
+
+
     li_element.innerHTML = `<li id="elem${Number(todoIndex)}" type="">
         <span>
           <h3>Задача №${Number(todoIndex) + 1}</h3>
@@ -94,10 +106,9 @@ function edit(todoIndex)
           </div>       
           &nbsp
           <div class="status-container">
-            <span>
-              Выберите состояние
-            </span>
-            <select aria-readonly="true">
+            Текущее состояние: <span class="${statusClass}" id="status${todoIndex}">${status}</span>
+            Выберите новый
+            <select id="select${todoIndex}">
               <option>В работе</option>
               <option>Завершена</option>
               <option>Отложена</option>
@@ -110,6 +121,16 @@ function edit(todoIndex)
         </span>
       <hr>
     </li>`;
+
+    let select = document.getElementById(`select${todoIndex}`);
+    select.addEventListener('change', function() {
+        let statusVar = document.getElementById(`status${todoIndex}`);
+        statusVar.removeAttribute('class');
+        let newStatus = this.options[this.selectedIndex].text;
+        statusVar.className = (newStatus === 'В работе') ? 'work-status' : (newStatus === 'Отложена') ? 'wait-status' : 'end-status';
+        statusVar.innerText = newStatus;
+    })
+
     let tags = li_element.querySelector(`#tags-list${Number(todoIndex)}`);
     let arTags = arTodos[todoIndex].tags;
     arTags.map((item, index) => {
@@ -117,7 +138,6 @@ function edit(todoIndex)
     });
     fullList.querySelector(`#input-edit${Number(todoIndex)}`).focus();
 }
-
 
 function add(index)
 {
@@ -140,16 +160,17 @@ function save(index)
 {
     let find_Tags = document.getElementById(`tags-list${index}`);
     let list_tags = find_Tags.getElementsByTagName('li');
+    let status = document.getElementById(`status${index}`);
+    let input = document.getElementById(`input-edit${index}`).value;
     let arTags = [];
-    for(let i = 0; i < list_tags.length; i++){
+    for(let i = 0; i < list_tags.length; i++) {
         if(list_tags[i].style.display != 'none')
         {
             let tag = list_tags[i].getElementsByTagName('span')[0];
             arTags.push(tag.innerText);
         }
     }
-    let input = document.getElementById(`input-edit${index}`).value;
-    if(input == "")
+    if(input === "")
     {
         let saved_ar = JSON.parse(localStorage.getItem('todos'));
         arTodos[index].descript = saved_ar[index].descript;
@@ -159,6 +180,7 @@ function save(index)
         arTodos[index].descript = input;
     }
     arTodos[index].tags = arTags;
+    arTodos[index].status = status.innerText;
     localStorage.setItem('todos', JSON.stringify(arTodos));
     list.innerHTML = "";
     render_todos();
