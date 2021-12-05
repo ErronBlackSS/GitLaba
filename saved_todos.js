@@ -32,7 +32,7 @@ function render_todos()
                                 <br>
                                  
                                 <div class="container">
-                                    <ul id="tags-list">
+                                    <ul id="tags-list${Number(obj)}">
                                         ${tags_init}
                                     </ul>
                                 </div>       &nbsp
@@ -105,6 +105,51 @@ function search()
     }
 }
 
+function search_tags()
+{
+    let input = document.getElementById("search-tags-input");
+    let filter = input.value.toUpperCase();
+    for (let i = 0; i < arTodos.length; i++)
+    {
+        if (arTodos[i] != null)
+        {
+            for (let j = 0; j < arTodos[i].tags.length; j++)
+            {
+                if (arTodos[i].tags[j].toUpperCase().indexOf(filter) > -1)
+                {
+                    let elem = document.getElementById(`elem${i}`)
+                    elem.style.display = "";
+                    break;
+                } else
+                {
+                    let elem = document.getElementById(`elem${i}`)
+                    elem.style.display = "none";
+                }
+            }
+        }
+    }
+}
+
+function filter_status(val)
+{
+    for (let i = 0; i < arTodos.length; i++)
+    {
+        if (arTodos[i] != null)
+        {
+            if (arTodos[i].status === val)
+                {
+                    let elem = document.getElementById(`elem${i}`)
+                    elem.style.display = "";
+                }
+            else
+            {
+                let elem = document.getElementById(`elem${i}`)
+                elem.style.display = "none";
+            }
+        }
+    }
+}
+
 function edit(todoIndex)
 {
     let fullList = document.querySelector("#saved_list");
@@ -124,7 +169,7 @@ function edit(todoIndex)
             <button onclick="add(${todoIndex})">add</button>
             <ul id="tags-list${Number(todoIndex)}">
             </ul>
-            <input type="text" id="txt${Number(todoIndex)}" placeholder="Введите категорию">
+            <input type="text" id="txt${Number(todoIndex)}" style="float: none" placeholder="Введите категорию">
           </div>       
           &nbsp
           <div class="status-container">

@@ -16,8 +16,13 @@
     <div><button onclick="show_filters()" id="filter-button"> Фильтры </button></div>
     <div class="container--filters" id="filters">
       <input id="search-input" onkeyup="search()" style="float: left" placeholder="Поиск по описанию">
+      <input id="search-tags-input" onkeyup="search_tags()" style="" placeholder="Поиск по категориям">
+      <select onchange = "filter_status(value)" id="select-status">
+        <option >В работе</option>
+        <option >Завершена</option>
+        <option >Отложена</option>
+      </select>
     </div>
-
     <ul id="saved_list">
     </ul>
   </div>

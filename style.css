@@ -2,7 +2,7 @@ body {
     margin: 0 0;
     font-family: DejaVu Sans Mono, monospace;
     font-size: 12px;
-    background-image: url("https://cdn.pixabay.com/photo/2016/11/22/23/03/hardwood-1851071_960_720.jpg");
+    background-image: url("https://instapik.ru/wp-content/uploads/2020/07/white-wood.jpg");
 }
 
 #filters {
@@ -10,26 +10,26 @@ body {
 }
 
 a.btn {
-    border: 1px solid black;
+    border: solid grey;
     margin: 3% 40%;
     float: left;
     font-weight: 700;
-    color: #333333;
+    color: black;
     text-decoration: none;
     padding: 20px 40px;
     border-radius: 3px;
-    background: #FFDAB9;
+    background: white;
     transition: 0.5s;
 }
 
 a.btn:hover {
-    background: #E6E6FA;
+    background: deepskyblue;
     transition: 0.5s;
 }
 
 a.btn:active {
-    background: rgb(33,147,90);
-    box-shadow: 0 3px rgb(33,147,90) inset;
+    background: deepskyblue;
+    box-shadow: 0 3px black inset;
 }
 
 .container-buttons button {
@@ -37,9 +37,9 @@ a.btn:active {
     *display:inline;
     vertical-align: center;
     outline: none;
-    color: #333333;
-    border-radius: 50px;
-    background-color: burlywood;
+    color: black;
+    border-radius: 20px;
+    background-color: white;
     margin-top: 0.5%;
     margin-left: 5%;
     margin-right: 5%;
@@ -48,7 +48,7 @@ a.btn:active {
 }
 
 .container-buttons button:hover {
-    background-color: crimson;
+    background-color: deepskyblue;
     transition: 0.5s;
 }
 
@@ -78,7 +78,10 @@ a.btn:active {
 
 .header--outer {
     display:inline-block;
-    background-color: #F5F5DC;
+    background-color: #dcdcdc;
+    border: solid;
+    border-color: grey;
+    border-style: ridge;
     position: relative;
     width: 100%;
     height: 80px;
@@ -107,15 +110,14 @@ a.btn:active {
 
 .todo-body-out--saved {
     overflow: auto;
-    background-color: antiquewhite;
+    background-color: #dcdcdc;
     position: relative;
-    border: 1px solid black;
     margin-top: 2%;
     height: 800px;
     margin-right: 30%;
     margin-left: 30%;
     text-align: center;
-    border: none;
+    border: solid grey;
     border-radius: 5px;
     -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
@@ -123,19 +125,19 @@ a.btn:active {
 }
 
 .todo-body-out {
-    background-color: antiquewhite;
+    background-color: #dcdcdc;
     position: relative;
-    border: 1px solid black;
     margin-top: 2%;
     height: 400px;
     margin-right: 30%;
     margin-left: 30%;
     text-align: center;
-    border: none;
+    border: solid grey;
     border-radius: 5px;
     -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+
 }
 
 .description-input {
@@ -191,6 +193,7 @@ a.btn:active {
     -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    min-height: 40px;
 }
 
 .container h1 {
@@ -218,9 +221,11 @@ a.btn:active {
 .container ul li {
     display: inline-block;
     font-weight: bold;
-    background: coral;
+    background: whitesmoke;
     color: black;
+
     padding: 3px 5px 3px 10px;
+    border: solid grey;
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -235,11 +240,11 @@ a.btn:active {
 }
 
 .container ul li a {
-    color: black;
+    color: white;
     text-decoration: none;
     margin-left: 5px;
     font-size: 10px;
-    background: #cd9f7a;
+    background: grey;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -250,7 +255,7 @@ a.btn:active {
 }
 
 .container ul li a:hover {
-    color: red;
+    color: deepskyblue;
 }
 
 .container input {
@@ -263,7 +268,7 @@ a.btn:active {
 }
 
 .container:focus-within {
-    border: solid 3px #a94b00;
+    border: solid 3px deepskyblue;
     transition: border-width 200ms linear;
 }
 
@@ -286,7 +291,7 @@ a.btn:active {
 }
 
 .saved-input-todo:focus-within {
-    border: solid 3px #a94b00;
+    border: solid 3px deepskyblue;
     transition: border-width 200ms linear;
 }
 
@@ -299,7 +304,7 @@ a.btn:active {
     font-size: 20px;
     font-weight: bold;
     color: orange;
-    content: '■';
+    content: '☁';
 }
 
 .work-status {
@@ -310,7 +315,7 @@ a.btn:active {
     font-size: 20px;
     font-weight: bold;
     color: red;
-    content: '☭';
+    content: '✍';
 }
 
 .end-status {
@@ -321,6 +326,6 @@ a.btn:active {
     margin-left: 5px;
     font-size: 20px;
     font-weight: bold;
-    color: lawngreen;
+    color: green;
     content: '✔';
 }
