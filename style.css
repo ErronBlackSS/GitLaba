@@ -2,10 +2,13 @@ body {
     margin: 0 0;
     font-family: DejaVu Sans Mono, monospace;
     font-size: 12px;
+    background-image: url("https://cdn.pixabay.com/photo/2016/11/22/23/03/hardwood-1851071_960_720.jpg");
 }
+
 #filters {
     width: 80%;
 }
+
 a.btn {
     border: 1px solid black;
     margin: 3% 40%;
@@ -18,14 +21,17 @@ a.btn {
     background: #FFDAB9;
     transition: 0.5s;
 }
+
 a.btn:hover {
     background: #E6E6FA;
     transition: 0.5s;
 }
+
 a.btn:active {
     background: rgb(33,147,90);
     box-shadow: 0 3px rgb(33,147,90) inset;
 }
+
 .container-buttons button {
     display:inline-block;
     *display:inline;
@@ -45,6 +51,7 @@ a.btn:active {
     background-color: crimson;
     transition: 0.5s;
 }
+
 .saved-a-todos {
     margin-left: 8.5%;
     display: block;
@@ -56,6 +63,7 @@ a.btn:active {
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
+
 .container-buttons {
     text-align:justify;
 }
@@ -75,6 +83,7 @@ a.btn:active {
     width: 100%;
     height: 80px;
 }
+
 .header--inner--left {
     display: block;
 }
@@ -112,6 +121,7 @@ a.btn:active {
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
+
 .todo-body-out {
     background-color: antiquewhite;
     position: relative;
@@ -142,12 +152,26 @@ a.btn:active {
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
+
 .description-input:focus {
     border: solid 3px #a94b00;
     transition: border-width 200ms linear;
 }
+
 .status-container {
     vertical-align: center;
+    width: 80%;
+    background: #f0f0f0;
+    padding: 15px 15px 10px 15px;
+    border-radius: 15px;
+    margin: auto;
+    -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+}
+
+.container--filters {
+    height: 100px;
     width: 80%;
     background: #f0f0f0;
     padding: 15px 15px 10px 15px;
@@ -168,11 +192,13 @@ a.btn:active {
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
+
 .container h1 {
     font-size: 18px;
     margin-top: 0px;
     margin-bottom: 20px;
 }
+
 .todo-body-inner ul {
     list-style: none;
     margin: 5px;
@@ -188,6 +214,7 @@ a.btn:active {
     padding: 0px;
     display: inline-block;
 }
+
 .container ul li {
     display: inline-block;
     font-weight: bold;
@@ -221,9 +248,11 @@ a.btn:active {
     align-items: center;
     justify-content: center;
 }
+
 .container ul li a:hover {
     color: red;
 }
+
 .container input {
     border: 0px;
     background: none;
@@ -232,10 +261,12 @@ a.btn:active {
     outline: none;
     float: left;
 }
+
 .container:focus-within {
     border: solid 3px #a94b00;
     transition: border-width 200ms linear;
 }
+
 #inputVal {
     text-align: center;
 }
@@ -257,4 +288,39 @@ a.btn:active {
 .saved-input-todo:focus-within {
     border: solid 3px #a94b00;
     transition: border-width 200ms linear;
+}
+
+.wait-status {
+    color: orange;
+}
+
+.wait-status:after {
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: orange;
+    content: '■';
+}
+
+.work-status {
+    color: red;
+}
+.work-status:after {
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    content: '☭';
+}
+
+.end-status {
+    color: green;
+}
+
+.end-status:after {
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: lawngreen;
+    content: '✔';
 }
