@@ -1,17 +1,23 @@
 let arTodos = JSON.parse(localStorage.getItem('todos'));
-
 let list = document.getElementById("saved_list");
 
 function render_todos()
 {
+    let sumOfNullValues = 0;
+    let arTodos = JSON.parse(localStorage.getItem('todos'));
+    let list = document.getElementById("saved_list");
+
+    list.innerHTML = '';
     for (let obj in arTodos)
     {
-        let tags_init = ``;
-        for (let tag in arTodos[obj].tags)
+        if (arTodos[obj] != null)
         {
-            tags_init += `<li><span>${arTodos[obj].tags[tag]}</span><a>X</a></li>`
-        }
-        list.innerHTML += `<li id="elem${Number(obj)}" type="">     
+            let tags_init = ``;
+            for (let tag in arTodos[obj].tags)
+            {
+                tags_init += `<li><span>${arTodos[obj].tags[tag]}</span><a>X</a></li>`
+            }
+            list.innerHTML += `<li id="elem${Number(obj)}" type="">     
                                 <h3>Задача №${Number(obj) + 1}</h3>
                                 <a class="saved-a-todos" type="text">${arTodos[obj].descript}</a>
                                 <br>
@@ -21,7 +27,7 @@ function render_todos()
                                         ${tags_init}
                                     </ul>
                                 </div>       &nbsp
-                                <div class="status-container">
+                               <div class="status-container">
                                     <span>
                                         Выберите состояние
                                     </span>
@@ -30,16 +36,37 @@ function render_todos()
                                         <option>Завершена</option>
                                         <option>Отложена</option>
                                     </select>
-                                </div>          
+                                </div>
                                 <div class="container-buttons">
                                     <button onclick="edit(${Number(obj)})">Редактировать</button>
-                                    <button>Удалить</button>
+                                    <button type="submit" id="submit" onclick="deleteToDo(${Number(obj)});"> Удалить</button>
                                  </div>       
                                 <hr>
                             </li>`;
+        }
+        if (arTodos[obj] == null)
+        {
+            sumOfNullValues = sumOfNullValues + 1;
+            if (sumOfNullValues === arTodos.length)
+                localStorage.clear();
+        }
     }
 }
-function show_filters() {
+function deleteToDo(a)
+{
+    let element = document.getElementById(`elem${a}`);
+    let arTodos = JSON.parse(localStorage.getItem('todos'));
+    let isDelete = confirm('Удалить заметку?');
+    if(isDelete)
+    {
+        delete arTodos[a];
+        localStorage.setItem('todos', JSON.stringify(arTodos));
+        render_todos();
+        console.log(element);
+    }
+}
+function show_filters()
+{
     let show = document.getElementById('filters');
     if(show.style.display == 'none')
     {
@@ -141,7 +168,8 @@ function save(index)
     let find_Tags = document.getElementById(`tags-list${index}`);
     let list_tags = find_Tags.getElementsByTagName('li');
     let arTags = [];
-    for(let i = 0; i < list_tags.length; i++){
+    for(let i = 0; i < list_tags.length; i++)
+    {
         if(list_tags[i].style.display != 'none')
         {
             let tag = list_tags[i].getElementsByTagName('span')[0];
@@ -176,11 +204,12 @@ function undo(index)
 
 function remove_tag(index, tdIndex)
 {
-  let chip = document.getElementById(`chip${tdIndex}${index}`);
-  chip.style.display = 'none';
+    let chip = document.getElementById(`chip${tdIndex}${index}`);
+    chip.style.display = 'none';
 }
 
-window.onload = function() {
+window.onload = function()
+{
     document.getElementById('filter-button').click();
     render_todos();
 }
