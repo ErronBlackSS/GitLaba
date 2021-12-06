@@ -132,6 +132,10 @@ function search_tags()
 
 function filter_status(val)
 {
+    if (val === 'Все')
+    {
+        return render_todos();
+    }
     for (let i = 0; i < arTodos.length; i++)
     {
         if (arTodos[i] != null)
@@ -180,7 +184,7 @@ function edit(todoIndex)
               <option>Завершена</option>
               <option>Отложена</option>
             </select>
-          </div>    
+          </div>
           <div class="container-buttons">
             <button onclick="save(${todoIndex})">Сохранить</button>
             <button onclick="undo(${todoIndex})">Отмена</button>
