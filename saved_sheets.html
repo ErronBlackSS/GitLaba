@@ -12,15 +12,25 @@
 </div>
 <div class="todo-body-out--saved">
   <div class="todo-body-inner">
-  <h1 class="todo-title">Сохраненные заметки</h1>
-    <div><button onclick="show_filters()" id="filter-button"> Фильтры </button></div>
+    <h1 class="todo-title">Сохраненные заметки</h1>
+    <div class="container-buttons-second"><button onclick="show_filters()" id="filter-button"> Фильтры </button></div>
     <div class="container--filters" id="filters">
-        <input id="search-input" onkeyup="search()" style="float: left" placeholder="Поиск по описанию">
+      <div class="d1">
+        <input id="search-input" onkeyup="search()"  placeholder="Поиск по описанию">
+      </div>
+      <div class="d1">
+        <input id="search-tags-input" onkeyup="search_tags()" placeholder="Поиск по категориям">
+      </div>
+      <select onchange = "filter_status(value)" id="select-status">
+        <option >В работе</option>
+        <option >Завершена</option>
+        <option >Отложена</option>
+        <option>Все</option>
+      </select>
     </div>
-
-  <ul id="saved_list">
-  </ul>
-</div>
+    <ul id="saved_list">
+    </ul>
+  </div>
 </div>
 <script src="saved_todos.js"></script>
 </body>
