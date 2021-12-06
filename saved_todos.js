@@ -4,35 +4,35 @@ let list = document.getElementById("saved_list");
 
 function render_todos()
 {
+    let sumOfNullValues = 0;
+    let arTodos = JSON.parse(localStorage.getItem('todos'));
+    let list = document.getElementById("saved_list");
+    list.innerHTML = '';
     for (let obj in arTodos)
     {
-        let tags_init = ``;
-        let statusClass = '';
-        let status = arTodos[obj].status;
-        if(status === 'В работе')
+        if (arTodos[obj] != null)
         {
-            statusClass = 'work-status';
-        }
-        else if(status === 'Отложена')
-        {
-            statusClass = 'wait-status';
-        }
-        else
-        {
-            statusClass = 'end-status';
-        }
-        for (let tag in arTodos[obj].tags)
-        {
-            tags_init += `<li><span>${arTodos[obj].tags[tag]}</span><a>X</a></li>`
-        }
+            let tags_init = ``;
+            let statusClass = '';
+            let status = arTodos[obj].status;
+            if (status === 'В работе') {
+                statusClass = 'work-status';
+            } else if (status === 'Отложена') {
+                statusClass = 'wait-status';
+            } else {
+                statusClass = 'end-status';
+            }
+            for (let tag in arTodos[obj].tags) {
+                tags_init += `<li><span>${arTodos[obj].tags[tag]}</span><a>X</a></li>`
+            }
 
-        list.innerHTML += `<li id="elem${Number(obj)}" type="">     
+            list.innerHTML += `<li id="elem${Number(obj)}" type="">     
                                 <h3>Задача №${Number(obj) + 1}</h3>
                                 <a class="saved-a-todos" type="text">${arTodos[obj].descript}</a>
                                 <br>
                                  
                                 <div class="container">
-                                    <ul id="tags-list">
+                                    <ul id="tags-list${Number(obj)}">
                                         ${tags_init}
                                     </ul>
                                 </div>       &nbsp
@@ -41,12 +41,34 @@ function render_todos()
                                 </div>          
                                 <div class="container-buttons">
                                     <button onclick="edit(${Number(obj)})">Редактировать</button>
-                                    <button>Удалить</button>
+                                    <button type="submit" id="submit" onclick="deleteToDo(${Number(obj)});"> Удалить</button>
                                  </div>       
                                 <hr>
                             </li>`;
+        }
+        if (arTodos[obj] == null)
+        {
+            sumOfNullValues = sumOfNullValues + 1;
+            if (sumOfNullValues === arTodos.length)
+                localStorage.clear();
+        }
     }
 }
+
+function deleteToDo(a)
+{
+    let element = document.getElementById(`elem${a}`);
+    let arTodos = JSON.parse(localStorage.getItem('todos'));
+    let isDelete = confirm('Удалить заметку?');
+    if(isDelete)
+    {
+        delete arTodos[a];
+        localStorage.setItem('todos', JSON.stringify(arTodos));
+        render_todos();
+        console.log(element);
+    }
+}
+
 function show_filters() {
     let show = document.getElementById('filters');
     if(show.style.display === 'none')
@@ -83,6 +105,55 @@ function search()
     }
 }
 
+function search_tags()
+{
+    let input = document.getElementById("search-tags-input");
+    let filter = input.value.toUpperCase();
+    for (let i = 0; i < arTodos.length; i++)
+    {
+        if (arTodos[i] != null)
+        {
+            for (let j = 0; j < arTodos[i].tags.length; j++)
+            {
+                if (arTodos[i].tags[j].toUpperCase().indexOf(filter) > -1)
+                {
+                    let elem = document.getElementById(`elem${i}`)
+                    elem.style.display = "";
+                    break;
+                } else
+                {
+                    let elem = document.getElementById(`elem${i}`)
+                    elem.style.display = "none";
+                }
+            }
+        }
+    }
+}
+
+function filter_status(val)
+{
+    if(val==='Все')
+    {
+        return render_todos();
+    }
+    for (let i = 0; i < arTodos.length; i++)
+    {
+        if (arTodos[i] != null)
+        {
+            if (arTodos[i].status === val)
+                {
+                    let elem = document.getElementById(`elem${i}`)
+                    elem.style.display = "";
+                }
+            else
+            {
+                let elem = document.getElementById(`elem${i}`)
+                elem.style.display = "none";
+            }
+        }
+    }
+}
+
 function edit(todoIndex)
 {
     let fullList = document.querySelector("#saved_list");
@@ -102,7 +173,7 @@ function edit(todoIndex)
             <button onclick="add(${todoIndex})">add</button>
             <ul id="tags-list${Number(todoIndex)}">
             </ul>
-            <input type="text" id="txt${Number(todoIndex)}" placeholder="Введите категорию">
+            <input type="text" id="txt${Number(todoIndex)}" style="float: none" placeholder="Введите категорию">
           </div>       
           &nbsp
           <div class="status-container">
@@ -198,8 +269,8 @@ function undo(index)
 
 function remove_tag(index, tdIndex)
 {
-  let chip = document.getElementById(`chip${tdIndex}${index}`);
-  chip.style.display = 'none';
+    let chip = document.getElementById(`chip${tdIndex}${index}`);
+    chip.style.display = 'none';
 }
 
 window.onload = function() {
