@@ -2,36 +2,45 @@ body {
     margin: 0 0;
     font-family: DejaVu Sans Mono, monospace;
     font-size: 12px;
+    background-image: url("https://instapik.ru/wp-content/uploads/2020/07/white-wood.jpg");
+}
+
+#filters {
+    width: 80%;
 }
 
 a.btn {
-    border: 1px solid black;
+    border: solid grey;
+    width: 100%;
     margin: 3% 40%;
     float: left;
     font-weight: 700;
-    color: #333333;
+    color: black;
     text-decoration: none;
     padding: 20px 40px;
     border-radius: 3px;
-    background: #FFDAB9;
+    background: white;
     transition: 0.5s;
 }
+
 a.btn:hover {
-    background: #E6E6FA;
+    background: deepskyblue;
     transition: 0.5s;
 }
+
 a.btn:active {
-    background: rgb(33,147,90);
-    box-shadow: 0 3px rgb(33,147,90) inset;
+    background: deepskyblue;
+    box-shadow: 0 3px black inset;
 }
+
 .container-buttons button {
     display:inline-block;
     *display:inline;
     vertical-align: center;
     outline: none;
-    color: #333333;
-    border-radius: 50px;
-    background-color: burlywood;
+    color: black;
+    border-radius: 20px;
+    background-color: white;
     margin-top: 0.5%;
     margin-left: 5%;
     margin-right: 5%;
@@ -40,8 +49,38 @@ a.btn:active {
 }
 
 .container-buttons button:hover {
-    background-color: orange;
+    background-color: deepskyblue;
     transition: 0.5s;
+}
+.container-buttons-second button {
+    display:inline-block;
+    *display:inline;
+    vertical-align: center;
+    outline: none;
+    color: black;
+    border-radius: 20px;
+    background-color: white;
+    margin-top: 0.5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 60px;
+}
+.container-buttons-second button:hover {
+    background-color: deepskyblue;
+    transition: 0.5s;
+}
+.saved-a-todos {
+    margin-left: 8.5%;
+    display: block;
+    width: 80%;
+    padding: 10px 10px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
 
 .container-buttons {
@@ -58,17 +97,22 @@ a.btn:active {
 
 .header--outer {
     display:inline-block;
-    background-color: #F5F5DC;
+    background-color: #dcdcdc;
+    border: solid;
+    border-color: grey;
+    border-style: ridge;
     position: relative;
     width: 100%;
     height: 80px;
 }
+
 .header--inner--left {
     display: block;
 }
 
 .header--inner {
-    display: block;
+    display: inline-block;
+    position: relative;
     margin: 0 0;
     padding-left: 5%;
     padding-top: 1%;
@@ -85,37 +129,38 @@ a.btn:active {
 
 .todo-body-out--saved {
     overflow: auto;
-    background-color: antiquewhite;
+    background-color: #dcdcdc;
     position: relative;
-    border: 1px solid black;
     margin-top: 2%;
     height: 800px;
     margin-right: 30%;
     margin-left: 30%;
     text-align: center;
-    border: none;
-    border-radius: 5px;
-    -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
-    -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
-    box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
-}
-.todo-body-out {
-    background-color: antiquewhite;
-    position: relative;
-    border: 1px solid black;
-    margin-top: 2%;
-    height: 400px;
-    margin-right: 30%;
-    margin-left: 30%;
-    text-align: center;
-    border: none;
+    border: solid grey;
     border-radius: 5px;
     -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
 
+.todo-body-out {
+    background-color: #dcdcdc;
+    position: relative;
+    margin-top: 2%;
+    height: 100%;
+    margin-right: 30%;
+    margin-left: 30%;
+    text-align: center;
+    border: solid grey;
+    border-radius: 5px;
+    -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+
+}
+
 .description-input {
+    background-color: #f0f0f0;
     outline: none;
     width: 80%;
     height: 40px;
@@ -128,12 +173,26 @@ a.btn:active {
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
+
 .description-input:focus {
-    border: solid 3px #a94b00;
+    border: solid 3px deepskyblue;
     transition: border-width 200ms linear;
 }
+
 .status-container {
     vertical-align: center;
+    width: 80%;
+    background: #f0f0f0;
+    padding: 15px 15px 10px 15px;
+    border-radius: 15px;
+    margin: auto;
+    -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+}
+
+.container--filters {
+    height: 100px;
     width: 80%;
     background: #f0f0f0;
     padding: 15px 15px 10px 15px;
@@ -150,15 +209,19 @@ a.btn:active {
     padding: 15px 15px 10px 15px;
     border-radius: 15px;
     margin: auto;
+    margin-bottom: 10px;
     -webkit-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
+    min-height: 40px;
 }
+
 .container h1 {
     font-size: 18px;
     margin-top: 0px;
     margin-bottom: 20px;
 }
+
 .todo-body-inner ul {
     list-style: none;
     margin: 5px;
@@ -174,11 +237,15 @@ a.btn:active {
     padding: 0px;
     display: inline-block;
 }
+
 .container ul li {
     display: inline-block;
-    background: coral;
-    color: white;
+    font-weight: bold;
+    background: whitesmoke;
+    color: black;
+
     padding: 3px 5px 3px 10px;
+    border: solid grey;
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -197,7 +264,7 @@ a.btn:active {
     text-decoration: none;
     margin-left: 5px;
     font-size: 10px;
-    background: #cd9f7a;
+    background: grey;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -206,9 +273,11 @@ a.btn:active {
     align-items: center;
     justify-content: center;
 }
+
 .container ul li a:hover {
-    color: red;
+    color: deepskyblue;
 }
+
 .container input {
     border: 0px;
     background: none;
@@ -217,10 +286,12 @@ a.btn:active {
     outline: none;
     float: left;
 }
+
 .container:focus-within {
-    border: solid 3px #a94b00;
+    border: solid 3px deepskyblue;
     transition: border-width 200ms linear;
 }
+
 #inputVal {
     text-align: center;
 }
@@ -238,3 +309,55 @@ a.btn:active {
     -moz-box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
     box-shadow: 3px 7px 8px 1px rgba(34, 60, 80, 0.16);
 }
+
+.saved-input-todo:focus-within {
+    border: solid 3px deepskyblue;
+    transition: border-width 200ms linear;
+}
+
+.wait-status {
+    color: orange;
+}
+
+.wait-status:after {
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: orange;
+    content: '☁';
+}
+
+.work-status {
+    color: red;
+}
+.work-status:after {
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    content: '✍';
+}
+
+.end-status {
+    color: green;
+}
+
+.end-status:after {
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+    content: '✔';
+}
+.d1 input {
+    width: 80%;
+    height: 40%;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    outline: none;
+    background: white;
+    color: black;
+}
+
